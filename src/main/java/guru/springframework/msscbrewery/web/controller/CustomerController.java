@@ -11,13 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -66,26 +62,6 @@ public class CustomerController {
     public void deleteCustomer(@PathVariable("id") UUID id) {
         log.info(">>>>>>> Deleting a customer: {}", id);
         this.customerService.delete(id);
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<String>> validationErrorHandler(
-            MethodArgumentNotValidException e) {
-
-        int size = e.getBindingResult().getAllErrors().size();
-
-        List<String> errors = new ArrayList<>(size);
-
-        e.getBindingResult().getAllErrors().stream()
-                .forEach(oe -> {
-                    String field = ((FieldError) oe).getField();
-                    String errMsg = String.join(" ", field,
-                            oe.getDefaultMessage());
-                    log.info(">>>>>>> " + errMsg);
-                    errors.add(errMsg);
-                });
-
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
     private String buildUrl(String uri, String pathVariable) {
