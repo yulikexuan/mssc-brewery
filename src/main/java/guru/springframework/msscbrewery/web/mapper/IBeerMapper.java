@@ -11,8 +11,6 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface IBeerMapper {
-
     BeerDtoV2 beerToBeerDto(Beer beer);
     Beer beerDtoToBeer(BeerDtoV2 beerDto);
-
 }///:~
