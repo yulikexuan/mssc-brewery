@@ -9,7 +9,7 @@ import guru.springframework.msscbrewery.web.model.v2.BeerDtoV2;
 import org.mapstruct.Mapper;
 
 
-@Mapper
+@Mapper(uses = DateTimeMapper.class)
 public interface IBeerMapper {
     BeerDtoV2 beerToBeerDto(Beer beer);
     Beer beerDtoToBeer(BeerDtoV2 beerDto);

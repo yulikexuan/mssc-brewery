@@ -133,8 +133,7 @@
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <!-- All classed that Mapstruct generates should be
-                             annotated as Spring Framework Components
-                        -->
+                             annotated as Spring Framework Components -->
                         <compilerArg>
                             -Amapstruct.defaultComponentModel=spring
                         </compilerArg>

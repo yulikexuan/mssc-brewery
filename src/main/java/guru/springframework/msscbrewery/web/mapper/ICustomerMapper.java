@@ -13,7 +13,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ICustomerMapper {
 
-    ICustomerMapper INSTANCE = Mappers.getMapper( ICustomerMapper.class );
+    ICustomerMapper INSTANCE = Mappers.getMapper(ICustomerMapper.class);
 
     CustomerDto customerToCustomerDto(Customer customer);
     Customer customerDtoToCustomer(CustomerDto customerDto);
